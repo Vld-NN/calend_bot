@@ -1,3 +1,4 @@
+from asyncore import dispatcher
 from http.client import responses
 
 import telegram
@@ -24,3 +25,13 @@ def today(update, context):
     else:
         update.message.reply_text('Сегодня нет никаких праздников. Можно просто насладиться днем.')
 
+updater = Updater(token='TOKEN', use_context=True)
+dispatcher = updater.dispatcher
+
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(today_handler)
+
+updater.start_polling()
+updater.idle()
+
+print('Bot started')
