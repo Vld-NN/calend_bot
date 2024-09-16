@@ -14,3 +14,6 @@ def get_holiday():
     today_holiday = next((h for h in holidays if h['date'] == today), None)
     return today_holiday
 
+def start(update, context):
+    update.message.reply_text('Привет! Я календарь праздников! Напиши /today, чтобы узнать какой сегодня праздник.')
+
